@@ -1,0 +1,51 @@
+[
+  {
+     "id": "h1", 
+    "name": "Drink 2 Liter Water", 
+    "category": "Health",
+    "description":"stay hydrated",
+    "streak": 0,
+    "longestStreak":0,
+    "icon":"",
+    "custom": false,
+    "completed":false,
+    "completionHistory":[]
+},
+  { 
+    "id": "h2", 
+    "name": "Read 10 Pages", 
+    "category": "Mindfulness",
+    "description": "Read atleast 10 pages of any book",
+    "streak": 0,
+    "longestStreak":0,
+    "icon":"",
+    "custom": false,
+    "completed":false,
+    "completionHistory":[]
+},
+{
+    "id":"h3",
+    "name":"Exercise for 30 minutes",
+    "category":"Fitness",
+    "description":"Do any kind of exercise",
+    "streak": 0,
+    "longestStreak":0,
+    "icon":"",
+    "custom": false,
+    "completed": false,
+    "completionHistory":[]
+},
+{
+    "id": "h4", 
+    "name": "Study for 2 hours", 
+    "category": "Education",
+    "description":"study any subject/course for at least 2 hours",
+    "streak": 0,
+    "longestStreak":0,
+    "icon":"",
+    "custom": false,
+    "completed":false,
+    "completionHistory":[]
+},
+
+]
