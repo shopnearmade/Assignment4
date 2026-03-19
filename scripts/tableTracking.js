@@ -12,3 +12,12 @@ cells.forEach(cell => {
         }
     });
 });
+function countHabit(habitName) {
+    const cells = document.querySelectorAll(`[data-habit="${habitName}"]`);
+    cells.forEach(cell => {
+    if(cell.dataset.value == 1){
+        countHabit++;
+    }
+    });
+    return countHabit;
+}
