@@ -31,9 +31,6 @@ function validateHabits(data) {
       }
     
     data.forEach((habit, index) => {
-        if (!habit.hasOwnProperty('id')) {
-            throw new Error(`Habit at index ${index} is missing 'id' property`);
-        }
         if (!habit.hasOwnProperty('name')) {
             throw new Error(`Habit at index ${index} is missing 'name' property`);
         }
@@ -61,10 +58,17 @@ fileInput.addEventListener('change',(e)=>
 
              // Validate structure
             validateHabits(habit);
-             
-            localStorage.setItem('habit', JSON.stringify(habit));
-            const retrieve = JSON.parse(localStorage.getItem("habit"));
-            console.log('Habits imported:', retrieve);
+
+            // Check if we have existing habits
+            const existingHabits = JSON.parse(localStorage.getItem('habit')) || [];
+            
+            // push to existing array
+            existingHabits.push(...habit);
+            
+            localStorage.setItem('habit', JSON.stringify(existingHabits));
+            console.log('Habits imported:', existingHabits);
+
+            renderHabitGrid();
         }
         catch (error)
         {
@@ -83,6 +87,7 @@ function addHabits()
     const modal = document.getElementById('modal');
     const addHabits = document.getElementById('add-habits');
 
+
      openBtn.addEventListener('click',()=>
     {
         console.log("Open clicked")
@@ -92,8 +97,33 @@ function addHabits()
     closeBtn.addEventListener('click',()=>
     {
         modal.setAttribute('hidden','' );
+        document.getElementById('habit-form').reset();
     });
 
+    addHabits.addEventListener('click',(e)=>
+    {
+        e.preventDefault(); 
+
+        
+        console.log('Add Habit button clicked');
+        const newHabit = {
+            name: document.getElementById('habit-name').value,
+            description: document.getElementById('habit-description').value,
+            category: document.getElementById('habit-category').value,
+            completed:false,
+            scheduledDays:[],
+            completionHistory:[],
+            streak:0
+        };
+        console.log(newHabit);
+
+    const exsitingHabit =JSON.parse(localStorage.getItem('habit') )|| [];
+    exsitingHabit.push(newHabit);
+    localStorage.setItem('habit',JSON.stringify(exsitingHabit));
+    modal.setAttribute('hidden','' );
+    document.getElementById('habit-form').reset();
+    });
+        
 
 
 
@@ -105,17 +135,17 @@ const themeSelect = document.getElementById('theme-select');
 function themeChange() {
     const selectedTheme = themeSelect.value;
     
-    // Apply the theme using the data-theme attribute to match your CSS rules
+    // Apply the theme using the data-theme attribute 
     document.documentElement.setAttribute('data-theme', selectedTheme);
     
-    // Save the user's preference to localStorage
+    // Save to localStorage
     localStorage.setItem('theme', selectedTheme);
 }
 
 // Listen for changes in the dropdown
 themeSelect.addEventListener('change', themeChange);
 
-// Apply the saved theme immediately when the page loads
+// Apply the saved theme  
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
     themeSelect.value = savedTheme;
@@ -133,3 +163,52 @@ function updateWeeklyProgress() {
     if (streak) streak.textContent = streakCount;
 }  
 updateWeeklyProgress();
+
+function renderHabitGrid()
+{
+    const grid =document.getElementById('days-grid');
+     if (!grid) return;
+
+
+    const habits = JSON.parse(localStorage.getItem('habit')) || [];
+
+    habits.forEach( habit =>
+    {
+        const habitDiv = document.createElement('div');
+        habitDiv.className = 'habit-name';
+        habitDiv.textContent=habit.name;
+        grid.appendChild(habitDiv);
+
+        for (let i=1;i<=7;i++)
+        {
+            const box =document.createElement('div');
+            box.className='habit-box';   
+            
+            // highligh the box if this day is already in json
+            if (Array.isArray(habit.scheduledDays) && habit.scheduledDays.includes(i)) {
+                box.classList.add('selected');
+            }
+
+            box.addEventListener('click',()=>
+            {
+                console.log(`Day ${i} clicked for habit '${habit.name}'`);
+                box.classList.toggle('selected');
+                habit.scheduledDays.push(i);
+                habit.scheduledDays.sort();
+                
+                
+                // save back to localStorage
+                localStorage.setItem('habit', JSON.stringify(habits));
+            });
+            grid.appendChild(box);
+        
+        }
+    }
+    )
+}
+renderHabitGrid();
+
+function renderDailyDashboard()
+{
+
+}

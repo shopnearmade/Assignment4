@@ -301,6 +301,45 @@ main section {
     padding: 20px;
     margin-bottom: 30px;
 }
+.grid-container
+{
+    display: grid;
+   grid-template-columns: minmax(100px, 2fr) repeat(7, 1fr);
+    gap: 10px;
+    align-items: center;
+    overflow-x: auto;  
+}
+.grid-header, .day-label
+{
+    font-weight: bold;
+    text-align: center;
+    background-color: var(--border);
+    padding:8px;
+    border-radius: 4px;
+}
+.habit-name
+{
+    font-weight: bold;
+}
+.habit-box
+{
+    height: 40px;
+    width: 100%;
+    background-color: var(--card-background); 
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;    
+}
+.habit-box.selected
+{
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+.daily-tracker
+{
+    display: flex;
+    gap: 10px;
+}
 @media (max-width: 768px) {
     header {
         flex-direction: column;

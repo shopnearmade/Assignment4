@@ -42,7 +42,6 @@
         </div>
    <!-- Export / Import -->
     <section id="data-management">
-        <button id="export-btn" >Export Data</button>
         <label for="import-file">Import Data:</label>
         <input type="file" id="import-file" accept=".json">
     </section>
@@ -51,13 +50,30 @@
     <!-- Daily Dashboard -->
     <section id="daily-dashboard">
         <h2>Today's List</h2>
-        <div id="habit-list"></div>
+        <div class="daily-tracker">
+            <div id="habit-list">Habit</div>
+            <div id="description"> Description</div>
+            <div id="done">Done?</div>
+            <input type="checkbox" id="habit-done">
+            <div id="streak">Streak</div>
+        </div>    
     </section>
 
     <!-- Habit Library -->
     <section id="habit-library-section">
         <h2>Habit Library</h2>
-        <div id="habit-library"></div>
+        <!-- grid -->
+         <div class="grid-container" id="days-grid">
+                <!-- Header-->
+                <div class="grid-header">Habits</div>
+                <div class="day-label">Sun</div>
+                <div class="day-label">Mon</div>
+                <div class="day-label">Tue</div>
+                <div class="day-label">Wed</div>
+                <div class="day-label">Thu</div>
+                <div class="day-label">Fri</div>
+                <div class="day-label">Sat</div>
+         </div>
         <button id="open-btn"> + Add Custom Habit</button>
     </section>
 
