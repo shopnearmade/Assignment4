@@ -39,20 +39,19 @@
             <select id="theme-select">
                 <option value="light">Light</option>
                 <option value="dark">Dark</option>
+                <!--<option value="high-contrast">High Contrast</option>-->
             </select>
         </div>
    <!-- Export / Import -->
-    <section id="data-management">
     <div id="data-management">
-        <h2>Import Data:</h2>
-        <label for="import-file"></label>
+        <label for="import-file">Import Data:</label>
         <input type="file" id="import-file" accept=".json">
-    </section>
+    </div>
  
     <main>
     <!-- Daily Dashboard -->
     <section id="daily-dashboard">
-        <h2>Today's List</h2>
+        <h2>Today's List - <span id="today-date"></span></h2>
         <div class="daily-tracker">
             <div id="habit-list">Habit</div>
             <div id="description"> Description</div>
@@ -94,7 +93,7 @@
         </div>
 
         <div class="progress-item">
-            <span>Current Streak</span>
+            <span>Best Streak</span>
             <span id="streak-count">0</span>
         </div>
     </div>
