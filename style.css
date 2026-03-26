@@ -17,15 +17,6 @@
     --border: #444;
 }
 
-[data-theme="high-contrast"] {
-    --background: black;
-    --text: #fff;
-    --primary: yellow;
-    --primary-text: black;
-    --card-background: black;
-    --border: #fff;
-}
-
 * {
     box-sizing: border-box;
     margin: 0;
