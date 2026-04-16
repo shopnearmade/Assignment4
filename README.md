@@ -4,7 +4,7 @@ Description of Current Organization:
 2. File Responsibilities: habit.js handles everything from fetching and parsing JSON files, listening to button clicks, calculating streaks, toggling CSS themes, generating HTML grid elements, JSON file import and validation, and directly reading/writing to localStorage.
  tableTracking.js handles weekly grid UI in the Habit Library, update completed count and streak display, toggling individual day as done/not done
 3. Mixed Responsibilities: In the table tableTracking.js, the grid rendering and the streak/count calculation are mixed in the same file and it duplicates some streak counting logic that also exists in habit.js
-
+![Current Diagram](./diagram.png)
 
  
 B. Proposed Modular Design
@@ -26,7 +26,8 @@ To resolve these the application will be refactored into modules using import an
 4. theme.js: Manages the application's theme state  
   Exposed Elements: initTheme() and themeChange(selectedTheme)
 5. app.js :	import and calls heckAndResetDailyTasks(), initUsername(), initTheme(), initModal(), renderHabitGrid(), renderDailyDashboard()
-   
+![Refactored Diagram](./diagram1.png)
+
 Proposed Refactor Items:
 •	Refactor 1:  
 Extract Data :move all localStorage.getItem() and setItem() calls out of the habit.js into storage.js  
