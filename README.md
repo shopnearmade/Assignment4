@@ -66,4 +66,4 @@ initModal()
   - renderDailyDashboard()
   - updateWeeklyProgress()
 habit.js (removed ) all logic has been distributed across the five new modules above and no longer loaded by index.html  
-tableTracking- removed
+tableTracking: removed
